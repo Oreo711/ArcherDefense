@@ -1,0 +1,16 @@
+{
+    "name": "_Project.Editor",
+    "rootNamespace": "Assets/_Project/Develop/Editor",
+    "references": [
+        "GUID:f3f0f3b05fa6d58469a4645029fbf14a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
