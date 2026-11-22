@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0789d0ca0d477fb13b2e1ae4bd1286, type: 3}
+  m_Name: LevelConfig 8
+  m_EditorClassIdentifier: _Project.Runtime::_Project.Develop.Runtime._Project.Develop.Runtime.Gameplay.LevelConfig
+  _whackGoal: 18
+  _initialLives: 3
+  _goldPerWhack: 5
+  _minMoleInterval: 0.2
+  _maxMoleInterval: 1.5
+  _moleWhackWindow: 1.8

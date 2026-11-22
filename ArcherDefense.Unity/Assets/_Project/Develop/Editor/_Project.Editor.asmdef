@@ -1,10 +1,12 @@
 {
     "name": "_Project.Editor",
-    "rootNamespace": "Assets/_Project/Develop/Editor",
+    "rootNamespace": "_Project.Develop.Editor",
     "references": [
-        "GUID:f3f0f3b05fa6d58469a4645029fbf14a"
+        "_Project.Infrastructure"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

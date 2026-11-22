@@ -1,9 +1,11 @@
 {
     "name": "_Project.Runtime",
-    "rootNamespace": "Assets/_Project/Develop/Runtime",
+    "rootNamespace": "_Project.Develop.Runtime",
     "references": [
-        "GUID:f3f0f3b05fa6d58469a4645029fbf14a",
-        "GUID:55d6fcca13e4fd745a4a7c6a0a895fb2"
+        "_Project.Infrastructure",
+        "_Project.Utils",
+        "VContainer",
+        "Unity.InputSystem"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
