@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _Project.Develop.Runtime._Project.Develop.Runtime.App.Navigation;
 using _Project.Develop.Runtime._Project.Develop.Runtime.Gameplay.Features;
 using _Project.Develop.Runtime._Project.Develop.Runtime.Meta.Features.Economy;
+using _Project.Develop.Runtime._Project.Develop.Runtime.Meta.Features.Progress;
 using _Project.Develop.Runtime.Infrastructure.ConfigsService;
 using UnityEngine;
 using VContainer;
@@ -17,6 +18,7 @@ namespace _Project.Develop.Runtime._Project.Develop.Runtime.Gameplay
 		[SerializeField] private List<Mole> _moles;
 
 		private ConfigsProviderService _configsProviderService;
+		private PlayerProgressService  _progressService;
 		private GameNavigation         _gameNavigation;
 		private WhackInputService      _inputService;
 		private WalletService          _walletService;
@@ -25,20 +27,23 @@ namespace _Project.Develop.Runtime._Project.Develop.Runtime.Gameplay
 		private LevelConfig     _levelConfig;
 
 		private bool  _isSetup;
+		private int   _currentLevel;
 		private float _nextInterval;
 		private int   _lives;
 		private int   _whacks;
-
+		private int   _earnedGold;
 
 		[Inject]
 		public void Construct (
 			ConfigsProviderService configsProviderService,
+			PlayerProgressService progressService,
 			GameNavigation gameNavigation,
 			WhackInputService inputService,
 			WalletService walletService
 		)
 		{
 			_configsProviderService = configsProviderService;
+			_progressService        = progressService;
 			_gameNavigation         = gameNavigation;
 			_inputService           = inputService;
 			_walletService          = walletService;
@@ -47,6 +52,7 @@ namespace _Project.Develop.Runtime._Project.Develop.Runtime.Gameplay
 
 		public void Setup (int level)
 		{
+			_currentLevel = level;
 			_levelConfig  = _levelListConfig.LevelConfigs[level - 1];
 			_lives        = _levelConfig.InitialLives;
 			_nextInterval = Random.Range(_levelConfig.MinMoleInterval, _levelConfig.MaxMoleInterval);
@@ -71,11 +77,11 @@ namespace _Project.Develop.Runtime._Project.Develop.Runtime.Gameplay
 			}
 
 			_whacks++;
+			_earnedGold += _levelConfig.GoldPerWhack;
 
 			if (_whacks > _levelConfig.WhackGoal)
 			{
-				Debug.Log("You Win!");
-				_gameNavigation.OpenMainMenu();
+				Win();
 			}
 		}
 
@@ -107,9 +113,23 @@ namespace _Project.Develop.Runtime._Project.Develop.Runtime.Gameplay
 
 			if (_lives <= 0)
 			{
-				Debug.Log("You Lose!");
-				_gameNavigation.OpenGameplay();
+				Lose();
 			}
+		}
+
+		private void Win ()
+		{
+			Debug.Log("You Win!");
+			_walletService.Add(CurrencyId.Gold, _earnedGold);
+			_progressService.CompleteLevel(_currentLevel);
+			_gameNavigation.OpenMainMenu();
+		}
+
+		private void Lose ()
+		{
+			Debug.Log("You Lose!");
+			_earnedGold = 0;
+			_gameNavigation.OpenGameplay();
 		}
 
 		private void PickMole ()

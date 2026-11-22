@@ -20,7 +20,7 @@ namespace _Project.Develop.Runtime._Project.Develop.Runtime.App.Gameplay
 
         public void Start()
         {
-            _gameplayCycle.Setup(_progressService.CurrentLevel);
+            _gameplayCycle.Setup(_progressService.SelectedLevel);
         }
     }
 }

@@ -34,9 +34,9 @@ namespace _Project.Develop.Runtime._Project.Develop.Runtime.App.Gameplay
 
         private void CompleteLevel()
         {
-            _playerProgress.CompleteLevel(_playerProgress.CurrentLevel);
+            _playerProgress.CompleteLevel(_playerProgress.HighestUnlockedLevel);
 
-            Debug.Log($"Победа: текущий уровень {_playerProgress.CurrentLevel}");
+            Debug.Log($"Победа: текущий уровень {_playerProgress.HighestUnlockedLevel}");
 
             _gameNavigation.OpenMainMenu();
         }

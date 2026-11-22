@@ -9,7 +9,7 @@ namespace _Project.Develop.Runtime._Project.Develop.Runtime.App.MainMenu
         protected override void Configure(IContainerBuilder builder)
         {
             builder.RegisterEntryPoint<MainMenuBootstrap>();
-            builder.RegisterEntryPoint<MainMenuDebugInput>();
+            builder.RegisterEntryPoint<MainMenuInput>();
         }
     }
 }

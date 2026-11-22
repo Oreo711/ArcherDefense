@@ -20,7 +20,7 @@ namespace _Project.Develop.Runtime._Project.Develop.Runtime.App.MainMenu
 
         public void Start()
         {
-            Debug.Log($"In main menu. Current level: {_playerProgress.CurrentLevel}");
+            Debug.Log($"In main menu. Current level: {_playerProgress.HighestUnlockedLevel}");
             Debug.Log($"Gold: {_wallet.Get(CurrencyId.Gold)}");
         }
     }
