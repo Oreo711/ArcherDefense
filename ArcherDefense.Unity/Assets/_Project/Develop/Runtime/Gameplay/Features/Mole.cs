@@ -1,10 +1,11 @@
 using System;
 using UnityEngine;
+using VContainer.Unity;
 
 
 namespace _Project.Develop.Runtime._Project.Develop.Runtime.Gameplay.Features
 {
-    public class Mole : MonoBehaviour
+    public class Mole : MonoBehaviour, ITickable
     {
         [SerializeField] private Transform _mole;
 

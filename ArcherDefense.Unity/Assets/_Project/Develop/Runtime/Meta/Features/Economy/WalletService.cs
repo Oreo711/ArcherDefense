@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using _Project.Develop.Runtime.Infrastructure.ConfigsService;
 
 
 namespace _Project.Develop.Runtime._Project.Develop.Runtime.Meta.Features.Economy
@@ -8,10 +9,14 @@ namespace _Project.Develop.Runtime._Project.Develop.Runtime.Meta.Features.Econom
     {
         private readonly Dictionary<CurrencyId, int> _amounts = new();
 
-        public WalletService()
+        public WalletService(ConfigsProviderService configsProviderService)
         {
+            GameplayConfig config = configsProviderService.GetConfig<GameplayConfig>();
+
             foreach (CurrencyId currency in Enum.GetValues(typeof(CurrencyId)))
                 _amounts[currency] = 0;
+
+            _amounts[CurrencyId.Gold] = config.StartingGold;
         }
 
         public int Get(CurrencyId currency) => _amounts[currency];
