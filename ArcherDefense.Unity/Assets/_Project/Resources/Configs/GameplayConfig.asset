@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e92e27da255bf44386d31d54c048ecd, type: 3}
   m_Name: GameplayConfig
   m_EditorClassIdentifier: _Project.Runtime::_Project.Develop.Runtime.GameplayConfig
-  _startingGold: 0
+  _startingGold: 50
